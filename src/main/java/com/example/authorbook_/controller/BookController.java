@@ -38,7 +38,7 @@ public class BookController {
         map.addAttribute("authors", authorRepository.findAll());
         return "addBook";
     }
-    //пff
+
 
 
     @PostMapping("/add")
@@ -53,12 +53,17 @@ public class BookController {
 
     @GetMapping("/delete")
     public String deleteById(@RequestParam("id") int id) {
-
         Optional<Book> one = bookRepository.findById(id);
         if (one.isPresent()) {
             bookRepository.deleteById(id);
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/byAuthor")
+    public String byAuthor(@RequestParam("authorId") int authorId, ModelMap modelMap) {
+        modelMap.addAttribute("books", bookRepository.findAllByAuthorId(authorId));
+        return "bookByAuthor";
     }
 
     @GetMapping("/getImage")

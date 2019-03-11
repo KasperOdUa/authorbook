@@ -31,5 +31,21 @@
         <td><a th:href="@{/book/delete(id=${book.id})}">Delete</a></td>
     </tr>
 </table>
+
+Users:
+<table border="1">
+    <tr>
+        <td>UserName</td>
+        <td>UserSurname</td>
+        <td>UserEmail</td>
+        <td>UserBooks</td>
+    </tr>
+    <tr th:each="u : ${users}">
+        <td th:text="${u.name}"></td>
+        <td th:text="${u.surname}"></td>
+        <td th:text="${u.email}"></td>
+        <td><span th:each="b : ${u.bookList}" th:text="${b.title + ' '}"></span></td>
+    </tr>
+</table>
 </body>
 </html>

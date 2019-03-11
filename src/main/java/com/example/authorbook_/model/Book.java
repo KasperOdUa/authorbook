@@ -22,7 +22,7 @@ public class Book {
     private int id;
     @Column
     private String title;
-    @Column
+    @Column(columnDefinition = "text")
     private String description;
     @Column
     private int count;
