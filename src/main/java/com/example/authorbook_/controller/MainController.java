@@ -30,6 +30,4 @@ public class MainController {
         map.addAttribute("users", userRepository.findAll());
         return "index";
     }
-
-
 }
